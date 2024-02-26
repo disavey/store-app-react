@@ -4,9 +4,34 @@ import Form from "./component/Form";
 import Product from "./dataProduct/dataProduct";
 
 function App() {
+  const initialStateData = {
+    name: "",
+    desc: "",
+    imageUrl: "",
+  };
+
+  const [products, setProducts] = useState(Product);
+
+  const [data, setData] = useState(initialStateData);
+  const { name, desc, imageUrl } = data;
+
   const [showForm, setShowForm] = useState(false);
   function handleOnClick() {
     setShowForm(!showForm);
+  }
+
+  function handleOnChange(e) {
+    setData({
+      ...data,
+      id: products.length + 1,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleOnSubmit(e) {
+    e.preventDefault();
+    setProducts([...products, data]);
+    setData(initialStateData);
   }
   return (
     <>
@@ -34,9 +59,9 @@ function App() {
           </svg>
           {showForm ? "hide" : "Show Form"}
         </div>
-        <div>{showForm ? <Form /> : ""}</div>
-        <div className="grid grid-cols-4 gap-4 mx-10 ">
-          {Product.map((data) => {
+        <div>{showForm ? <Form name={name} description={desc} image={imageUrl} onChange={handleOnChange} onSubmit={handleOnSubmit}/> : ""}</div>
+        <div className="grid grid-cols-4 gap-4 mx-10 mt-5">
+          {products.map((data) => {
             return (
               <Card
                 key={data.id}
