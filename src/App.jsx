@@ -8,6 +8,7 @@ function App() {
     name: "",
     desc: "",
     imageUrl: "",
+    price: "",
   };
 
   const [products, setProducts] = useState(Product);
@@ -33,11 +34,16 @@ function App() {
     setProducts([...products, data]);
     setData(initialStateData);
   }
+
+  function handleDelete(identity) {
+    const filterId = products.filter((data) => data.id != identity);
+    setProducts(filterId);
+  }z
   return (
     <>
       <div className="my-5">
         <h1 className="text-3xl font-semibold text-center p-7 mt-5">
-          Allam's Thrift
+          Allam Thrift
         </h1>
       </div>
 
@@ -59,8 +65,20 @@ function App() {
           </svg>
           {showForm ? "hide" : "Show Form"}
         </div>
-        <div>{showForm ? <Form name={name} description={desc} image={imageUrl} onChange={handleOnChange} onSubmit={handleOnSubmit}/> : ""}</div>
-        <div className="grid grid-cols-4 gap-4 mx-10 mt-5">
+        <div>
+          {showForm ? (
+            <Form
+              name={name}
+              description={desc}
+              image={imageUrl}
+              onChange={handleOnChange}
+              onSubmit={handleOnSubmit}
+            />
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-4 gap-4 mx-10 mt-5 ">
           {products.map((data) => {
             return (
               <Card
@@ -69,6 +87,7 @@ function App() {
                 name={data.name}
                 description={data.desc}
                 harga={data.price}
+                onClick={() => handleDelete(data.id)}
               />
             );
           })}

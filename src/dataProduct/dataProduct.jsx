@@ -17,15 +17,15 @@ const Product = [
   },
   {
     id: 3,
-    name: "Short Levi's",
+    name: "Long Levi's",
     desc: "Timeless. Iconic. Authentic. Crafted with precision and heritage, Levi's jeans are more than just denim—they're a symbol of individuality and style.",
     imageUrl:
-      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: "Rp. 700.000,00",
   },
   {
     id: 4,
-    name: "Denim Jacket Levi,s",
+    name: "Denim Jacket Levi's",
     desc: "A timeless icon of style and versatility. Crafted with Levi's renowned quality and attention to detail, this jacket seamlessly blends classic denim.",
     imageUrl:
       "https://images.unsplash.com/photo-1537465978529-d23b17165b3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
