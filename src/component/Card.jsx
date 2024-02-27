@@ -1,4 +1,4 @@
-function Card({ image, name, description, harga, onClick }) {
+function Card({ image, name, description, harga, onClickDelete }) {
   return (
     <>
       <div className="border  border-gray-300 rounded-lg">
@@ -29,7 +29,7 @@ function Card({ image, name, description, harga, onClick }) {
               />
             </svg>
           </button>
-          <button onClick={onClick}>
+          <button onClick={onClickDelete}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

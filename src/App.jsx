@@ -36,14 +36,14 @@ function App() {
   }
 
   function handleDelete(identity) {
-    const filterId = products.filter((data) => data.id != identity);
-    setProducts(filterId);
+    const filterProduct = products.filter((data) => data.id != identity);
+    setProducts(filterProduct);
   }
 
   return (
     <>
       <div className="my-5">
-        <h1 className="text-3xl font-semibold text-center p-7 mt-5">
+        <h1 className="text-3xl font-semibold text-center p-7 mt-5 font-serif">
           Allam Thrift
         </h1>
       </div>
@@ -88,7 +88,7 @@ function App() {
                 name={data.name}
                 description={data.desc}
                 harga={data.price}
-                onClick={() => handleDelete(data.id)}
+                onClickDelete={() => handleDelete(data.id)}
               />
             );
           })}
