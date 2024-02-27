@@ -38,7 +38,8 @@ function App() {
   function handleDelete(identity) {
     const filterId = products.filter((data) => data.id != identity);
     setProducts(filterId);
-  }z
+  }
+
   return (
     <>
       <div className="my-5">
