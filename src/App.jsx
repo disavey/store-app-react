@@ -23,9 +23,9 @@ function App() {
 
   function handleOnChange(e) {
     setData({
-      ...data,
       id: products.length + 1,
       [e.target.name]: e.target.value,
+      ...data,
     });
   }
 
