@@ -21,11 +21,10 @@ function App() {
     setShowForm(!showForm);
   }
 
-  function handleOnChange(e) {
+  function handleOnChange(event) {
     setData({
       id: products.length + 1,
-      [e.target.name]: e.target.value,
-      ...data,
+      [event.target.name]: event.target.value,
     });
   }
 
