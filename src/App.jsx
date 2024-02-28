@@ -43,7 +43,7 @@ function App() {
     <>
       <div className="my-5">
         <h1 className="text-3xl font-semibold text-center p-7 mt-5 font-serif">
-          Allam jual shotgun
+          Allam Thrift
         </h1>
       </div>
 
