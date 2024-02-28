@@ -31,7 +31,7 @@ function Form({ name, description, amount , image, onChange, onSubmit }) {
             />
             <input
               className="border-2 border-slate-400 rounded-lg p-2 mt-2 w-96"
-              type="link"
+              type="url"
               placeholder="Link Image"
               value={image}
               onChange={onChange}
