@@ -1,4 +1,4 @@
-function Card({ image, name, description, harga, onClickDelete }) {
+function Card({ image, name, description, harga, onClickDelete, onClickEdit }) {
   return (
     <>
       <div className="border  border-gray-300 rounded-lg">
@@ -13,7 +13,7 @@ function Card({ image, name, description, harga, onClickDelete }) {
           <p className="font-semibold mt-2">{harga}</p>
         </div>
         <div className="flex justify-end gap-3">
-          <button>
+          <button onClick={onClickEdit}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

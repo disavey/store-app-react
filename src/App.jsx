@@ -5,6 +5,7 @@ import Product from "./dataProduct/dataProduct";
 
 function App() {
   const initialStateData = {
+    id: null,
     name: "",
     desc: "",
     imageUrl: "",
@@ -14,29 +15,45 @@ function App() {
   const [products, setProducts] = useState(Product);
 
   const [data, setData] = useState(initialStateData);
-  const { name, desc, imageUrl } = data;
+  const { id, name, desc, imageUrl, price } = data;
 
   const [showForm, setShowForm] = useState(false);
   function handleOnClick() {
     setShowForm(!showForm);
   }
 
-  function handleOnChange(event) {
+  function handleOnChange(e) {
     setData({
-      id: products.length + 1,
-      [event.target.name]: event.target.value,
+      ...data,
+      [e.target.name]: e.target.value,
     });
   }
 
   function handleOnSubmit(e) {
     e.preventDefault();
-    setProducts([...products, data]);
+    if (id) {
+      //JIka ID Product sudah ada, ini adalah mode edit
+      const updatedProduct = products.map((product) =>
+        product.id === id ? data : product
+      );
+      setProducts(updatedProduct);
+    } else {
+      //jika ID produk tidak ada tambahkan produk produk baru
+      setProducts([...products, { ...data, id: products.length + 1 }]);
+    }
     setData(initialStateData);
   }
 
   function handleDelete(identity) {
     const filterProduct = products.filter((data) => data.id != identity);
     setProducts(filterProduct);
+  }
+
+  function handleEdit(productId) {
+    const producToEdit = products.find((product) => product.id === productId);
+    console.log(producToEdit);
+    setData(producToEdit);
+    setShowForm(true);
   }
 
   return (
@@ -71,6 +88,7 @@ function App() {
               name={name}
               description={desc}
               image={imageUrl}
+              amount={price}
               onChange={handleOnChange}
               onSubmit={handleOnSubmit}
             />
@@ -88,6 +106,7 @@ function App() {
                 description={data.desc}
                 harga={data.price}
                 onClickDelete={() => handleDelete(data.id)}
+                onClickEdit={() => handleEdit(data.id)}
               />
             );
           })}
