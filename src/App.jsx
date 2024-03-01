@@ -17,6 +17,8 @@ function App() {
   const [data, setData] = useState(initialStateData);
   const { id, name, desc, imageUrl, price } = data;
 
+  const [cart, setCart] = useState([]);
+
   const [showForm, setShowForm] = useState(false);
   function handleOnClick() {
     setShowForm(!showForm);
@@ -57,8 +59,14 @@ function App() {
   }
 
   function handleBag(cartId) {
-    const addProduct = products.find((product) => product.id === cartId);
-    console.log(addProduct);
+    setCart([
+      ...cart,
+      {
+        id: cartId.id,
+        name: cartId.name,
+        price: cartId.price,
+      },
+    ]);
   }
 
   return (
@@ -67,10 +75,28 @@ function App() {
         <h1 className="text-3xl font-semibold text-center p-7 mt-5 font-serif">
           Allam Thrift
         </h1>
-        
-      </div>
-      <div>
-        <ListCart />  
+
+        <div className="flex justify-center">
+          {cart.length == 0 ? (
+            <ListCart />
+          ) : (
+            <>
+              {cart.map((carts) => (
+                <div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name Product</th>
+                        <td>:</td>
+                        <td>{carts.name}</td>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
       </div>
       <div className="p-5">
         <div className="flex justify-between mx-10 mb-10">
@@ -136,7 +162,6 @@ function App() {
             );
           })}
         </div>
-        
       </div>
     </>
   );
