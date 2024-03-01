@@ -1,4 +1,4 @@
-function Card({ image, name, description, harga, onClickDelete, onClickEdit }) {
+function Card({ image, name, description, harga, onClickDelete, onClickEdit, onClickBag }) {
   return (
     <>
       <div className="border  border-gray-300 rounded-lg">
@@ -14,7 +14,7 @@ function Card({ image, name, description, harga, onClickDelete, onClickEdit }) {
         </div>
         <div className="flex justify-between p-2">
           <div>
-            <button className="flex gap-1">
+            <button className="flex gap-1" onClick={onClickBag}>
               <p className="text-lg font-medium">add to</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

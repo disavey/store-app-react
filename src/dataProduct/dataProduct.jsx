@@ -25,7 +25,7 @@ const Product = [
   },
   {
     id: 4,
-    name: "Denim Jacket Levi's",
+    name: "Denim Jacket Levis",
     desc: "A timeless icon of style and versatility. Crafted with Levi's renowned quality and attention to detail, this jacket seamlessly blends classic denim.",
     imageUrl:
       "https://images.unsplash.com/photo-1537465978529-d23b17165b3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
