@@ -3,6 +3,9 @@ import Card from "./component/Card";
 import Form from "./component/Form";
 import Product from "./dataProduct/dataProduct";
 import ListCart from "./component/ListCart";
+import UseEffect from "./component/UseEffect";
+import { useEffect } from "react";
+
 function App() {
   const initialStateData = {
     id: null,
@@ -20,6 +23,7 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const [showForm, setShowForm] = useState(false);
+
   function handleOnClick() {
     setShowForm(!showForm);
   }
@@ -101,25 +105,9 @@ function App() {
                 </div>
               ) : (
                 <>
-                  {cart.map((carts) => (
+                  {cart.map((item) => (
                     <div className="border border-slate-400" key={carts.id}>
-                      <table>
-                        <thead>
-                          <tr>
-                            <td>{carts.image}</td>
-                          </tr>
-                          <tr>
-                            <th>Name Product</th>
-                            <td>:</td>
-                            <td>{carts.name}</td>
-                          </tr>
-                          <tr>
-                            <th>Price</th>
-                            <td>:</td>
-                            <td>{carts.price}</td>
-                          </tr>
-                        </thead>
-                      </table>
+                      <ListCart image={item.imageUrl} title={item.name} />
                     </div>
                   ))}
                 </>
@@ -174,6 +162,9 @@ function App() {
             );
           })}
         </div>
+      </div>
+      <div>
+        <UseEffect />
       </div>
     </>
   );

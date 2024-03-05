@@ -1,4 +1,4 @@
-function ListCart({ image }) {
+function ListCart({ image, title, price }) {
   return (
     <>
       <div className="border border-gray-300 p-2 rounded-lg w-96 text-center">
@@ -9,6 +9,8 @@ function ListCart({ image }) {
             alt=""
             className="w-52 rounded-sm"
           />
+          <p>{title}</p>
+          <p>{price}</p>
         </div>
       </div>
     </>
