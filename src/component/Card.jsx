@@ -11,14 +11,14 @@ function Card({
     <>
       <div className="border border-gray-300   flex-col flex justify-between rounded-lg">
         <img
-          className="rounded-t-lg w-full h-60 object-contain "
+          className="rounded-t-lg w-full max-h-52 object-contain "
           src={image}
           alt="product"
         />
         <div className="p-2 mt-2">
-          <p className="text-lg font-semibold ">{name}</p>
-          <p className="text-slate-500">{description}</p>
-          <p className="font-semibold ">{harga}</p>
+          <p className="text-lg font-semibold truncate">{name}</p>
+          <p className="text-slate-500 truncate">{description}</p>
+          <p className="font-semibold ">${harga}</p>
         </div>
         <div className="flex justify-between p-2">
           <div>

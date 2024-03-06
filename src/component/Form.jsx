@@ -1,4 +1,4 @@
-function Form({ name, description, amount , image, onChange, onSubmit }) {
+function Form({ name, description, amount, image, onChange, onSubmit }) {
   return (
     <>
       <div className="flex justify-center ">
@@ -10,7 +10,7 @@ function Form({ name, description, amount , image, onChange, onSubmit }) {
               placeholder="Nama"
               value={name}
               onChange={onChange}
-              name="name"
+              name="title"
             />
             <input
               className="border-2 border-slate-400 rounded-lg p-2 mt-2 w-96"
@@ -18,7 +18,7 @@ function Form({ name, description, amount , image, onChange, onSubmit }) {
               placeholder="Description"
               value={description}
               onChange={onChange}
-              name="desc"
+              name="description"
             />
 
             <input
@@ -35,7 +35,7 @@ function Form({ name, description, amount , image, onChange, onSubmit }) {
               placeholder="Link Image"
               value={image}
               onChange={onChange}
-              name="imageUrl"
+              name="image"
             />
           </div>
           <input

@@ -22,11 +22,21 @@ function App() {
 
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://fakestoreapi.com/products")
+  //     .then((res) => res.json())
+  //     .then((json) => setProducts(json));
+  // }, []);
+
+  async function api(){
+    const fetchApi = await fetch("https://fakestoreapi.com/products")
+    const dataJ = await fetchApi.json()
+    setProducts(dataJ)
+  }
+
+  useEffect(() =>{
+    api()
+  }, [])
 
   function handleOnClick() {
     setShowForm(!showForm);
@@ -151,7 +161,7 @@ function App() {
               image={image}
               amount={price}
               onChange={handleOnChange}
-              onSubmit={handleOnSubmit}
+              onSubmit={handleOnSubmit}                                     
             />
           ) : (
             ""
