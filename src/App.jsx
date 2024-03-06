@@ -1,28 +1,32 @@
 import { useState } from "react";
 import Card from "./component/Card";
 import Form from "./component/Form";
-import Product from "./dataProduct/dataProduct";
 import ListCart from "./component/ListCart";
-import UseEffect from "./component/UseEffect";
 import { useEffect } from "react";
 
 function App() {
   const initialStateData = {
     id: null,
-    name: "",
-    desc: "",
-    imageUrl: "",
+    title: "",
+    description: "",
+    image: "",
     price: "",
   };
 
-  const [products, setProducts] = useState(Product);
+  const [products, setProducts] = useState([]);
 
   const [data, setData] = useState(initialStateData);
-  const { id, name, desc, imageUrl, price } = data;
+  const { id, title, description, image, price } = data;
 
   const [cart, setCart] = useState([]);
 
   const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => setProducts(json));
+  }, []);
 
   function handleOnClick() {
     setShowForm(!showForm);
@@ -68,7 +72,7 @@ function App() {
       {
         id: cartId.id,
         imageUrl: cartId.image,
-        name: cartId.name,
+        title: cartId.title,
         price: cartId.price,
       },
     ]);
@@ -105,11 +109,18 @@ function App() {
                 </div>
               ) : (
                 <>
-                  {cart.map((item) => (
-                    <div className="border border-slate-400" key={carts.id}>
-                      <ListCart image={item.imageUrl} title={item.name} />
-                    </div>
-                  ))}
+                  <div className="border-2 border-slate-300 rounded-lg">
+                    <h1 className="text-xl text-center">List Cart</h1>
+                    {cart.map((item) => (
+                      <div className="" key={item.id}>
+                        <ListCart
+                          image={item.imageUrl}
+                          title={item.title}
+                          price={item.price}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </>
               )}
             </div>
@@ -135,9 +146,9 @@ function App() {
         <div>
           {showForm ? (
             <Form
-              name={name}
-              description={desc}
-              image={imageUrl}
+              name={title}
+              description={description}
+              image={image}
               amount={price}
               onChange={handleOnChange}
               onSubmit={handleOnSubmit}
@@ -151,9 +162,9 @@ function App() {
             return (
               <Card
                 key={data.id}
-                image={data.imageUrl}
-                name={data.name}
-                description={data.desc}
+                image={data.image}
+                name={data.title}
+                description={data.description}
                 harga={data.price}
                 onClickDelete={() => handleDelete(data.id)}
                 onClickEdit={() => handleEdit(data.id)}
@@ -162,9 +173,6 @@ function App() {
             );
           })}
         </div>
-      </div>
-      <div>
-        <UseEffect />
       </div>
     </>
   );

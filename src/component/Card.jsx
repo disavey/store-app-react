@@ -1,16 +1,24 @@
-function Card({ image, name, description, harga, onClickDelete, onClickEdit, onClickBag }) {
+function Card({
+  image,
+  name,
+  description,
+  harga,
+  onClickDelete,
+  onClickEdit,
+  onClickBag,
+}) {
   return (
     <>
-      <div className="border  border-gray-300 rounded-lg">
+      <div className="border border-gray-300   flex-col flex justify-between rounded-lg">
         <img
-          className="rounded-t-lg w-full h-60 object-cover "
+          className="rounded-t-lg w-full h-60 object-contain "
           src={image}
           alt="product"
         />
-        <div className="p-2">
-          <p className="text-xl font-semibold ">{name}</p>
+        <div className="p-2 mt-2">
+          <p className="text-lg font-semibold ">{name}</p>
           <p className="text-slate-500">{description}</p>
-          <p className="font-semibold mt-2">{harga}</p>
+          <p className="font-semibold ">{harga}</p>
         </div>
         <div className="flex justify-between p-2">
           <div>

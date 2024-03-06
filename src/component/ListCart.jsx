@@ -1,16 +1,13 @@
 function ListCart({ image, title, price }) {
   return (
     <>
-      <div className="border border-gray-300 p-2 rounded-lg w-96 text-center">
-        <h1>Cart is Empty</h1>
-        <div>
-          <img
-            src={image}
-            alt=""
-            className="w-52 rounded-sm"
-          />
-          <p>{title}</p>
-          <p>{price}</p>
+      <div className="p-2 w-3/4 rounded-xl">
+        <div className="flex">
+          <img src={image} alt="" className="w-32" />
+          <div className="mt-5 ml-5 ">
+            <p>{title}</p>
+            <p className="font-semibold">${price}</p>
+          </div>
         </div>
       </div>
     </>
