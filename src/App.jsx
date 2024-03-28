@@ -22,21 +22,15 @@ function App() {
 
   const [showForm, setShowForm] = useState(false);
 
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products")
-  //     .then((res) => res.json())
-  //     .then((json) => setProducts(json));
-  // }, []);
-
-  async function api(){
-    const fetchApi = await fetch("https://fakestoreapi.com/products")
-    const dataJ = await fetchApi.json()
-    setProducts(dataJ)
+  async function api() {
+    const fetchApi = await fetch("https://fakestoreapi.com/products");
+    const dataJ = await fetchApi.json();
+    setProducts(dataJ);
   }
 
-  useEffect(() =>{
-    api()
-  }, [])
+  useEffect(() => {
+    api();
+  }, []);
 
   function handleOnClick() {
     setShowForm(!showForm);
@@ -77,15 +71,26 @@ function App() {
   }
 
   function handleBag(cartId) {
-    setCart([
-      ...cart,
-      {
-        id: cartId.id,
-        imageUrl: cartId.image,
-        title: cartId.title,
-        price: cartId.price,
-      },
-    ]);
+    if (cart.find((items) => items.id == cartId.id)) {
+      setCart(
+        cart.map((item) =>
+          item.id == cartId.id ? { ...item, qty: item.qty + 1 } : item
+        )
+      );
+      confirm(`${cartId.title} quantity has been increased!`);
+    } else {
+      setCart([
+        ...cart,
+        {
+          id: cartId.id,
+          imageUrl: cartId.image,
+          title: cartId.title,
+          price: cartId.price,
+          qty: 1,
+        },
+      ]);
+    }
+    console.log(`add ${cartId.title} to cart`);
   }
 
   return (
@@ -161,7 +166,7 @@ function App() {
               image={image}
               amount={price}
               onChange={handleOnChange}
-              onSubmit={handleOnSubmit}                                     
+              onSubmit={handleOnSubmit}
             />
           ) : (
             ""

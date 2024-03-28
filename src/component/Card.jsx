@@ -17,7 +17,7 @@ function Card({
         />
         <div className="p-2 mt-2">
           <p className="text-lg font-semibold truncate">{name}</p>
-          <p className="text-slate-500 truncate">{description}</p>
+          <p className="text-slate-500">{description.substring(0, 98)}</p>
           <p className="font-semibold ">${harga}</p>
         </div>
         <div className="flex justify-between p-2">
